@@ -8,7 +8,7 @@ A Django RESTful API for a Guestbook application. This backend handles user entr
 
 - **Automatic User Creation**: Automatically creates a new user if the `name` is unique when creating an entry.
 
-- **Pagination and Ordering**: Retrieve entries with pagination (3 items per page) in descending order by created date.
+- **Pagination and Ordering**: Retrieve entries with pagination in descending order by created date.
 
 - **User Data Overview**: Displays total message count and latest entry details for each user.
 
@@ -36,7 +36,7 @@ A Django RESTful API for a Guestbook application. This backend handles user entr
 
 ### Prerequisites
 
-- Python 3.8+
+- Python 3.10+
 
 - PostgreSQL
 
