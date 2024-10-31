@@ -1,5 +1,10 @@
 # Guestbook API
 
+![Build](https://github.com/ilkeozi/bumper-entries/actions/workflows/build.yml/badge.svg)
+![Unit Tests](https://github.com/ilkeozi/bumper-entries/actions/workflows/unit-tests.yml/badge.svg)
+![Integration Tests](https://github.com/ilkeozi/bumper-entries/actions/workflows/integration-tests.yml/badge.svg)
+![E2E Tests](https://github.com/ilkeozi/bumper-entries/actions/workflows/e2e-tests.yml/badge.svg)
+
 A Django RESTful API for a Guestbook application. This backend handles user entries, allowing users to create, retrieve, and delete entries. It supports pagination and optimized querying for efficient performance, with comprehensive test coverage and API documentation via Swagger.
 
 ## Features

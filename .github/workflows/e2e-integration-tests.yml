@@ -1,0 +1,78 @@
+name: E2E and Integration Test Suite
+
+on: [push, pull_request]
+
+jobs:
+  integration-tests:
+    runs-on: ubuntu-latest
+
+    env:
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_NAME: ${{ secrets.DB_NAME }}
+      DB_HOST: ${{ secrets.DB_HOST }}
+      DB_PORT: ${{ secrets.DB_PORT }}
+
+    concurrency:
+      group: test-db-access
+      cancel-in-progress: true
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Set up the database
+        run: |
+          python manage.py migrate
+
+      - name: Run integration tests
+        run: |
+          pytest guestbook/tests/integration --disable-warnings --reuse-db --create-db
+
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    env:
+      DB_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_NAME: ${{ secrets.DB_NAME }}
+      DB_HOST: ${{ secrets.DB_HOST }}
+      DB_PORT: ${{ secrets.DB_PORT }}
+
+    concurrency:
+      group: test-db-access
+      cancel-in-progress: true
+
+    needs: integration-tests
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Set up the database
+        run: |
+          python manage.py migrate
+
+      - name: Run E2E tests
+        run: |
+          pytest guestbook/tests/e2e --disable-warnings --reuse-db --create-db
