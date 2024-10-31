@@ -27,7 +27,10 @@ class TestEntryEndpoints(LiveServerTestCase):
         url = f"{self.base_url}/api/entries/"
         response = self.client.get(url)
         assert response.status_code == 200
-        assert "Subject1" in [entry["subject"] for entry in response.json()]
+
+        # Extract entries from the paginated results
+        entries = response.json().get("results", [])
+        assert "Subject1" in [entry["subject"] for entry in entries]
 
     def test_delete_entry(self):
         # Create an entry
