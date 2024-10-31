@@ -33,4 +33,4 @@ jobs:
 
       - name: Run integration tests
         run: |
-          pytest guestbook/tests/integration --disable-warnings
+          pytest guestbook/tests/integration --disable-warnings --reuse-db --create-db

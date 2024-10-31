@@ -33,4 +33,4 @@ jobs:
 
       - name: Run E2E tests
         run: |
-          pytest guestbook/tests/e2e --disable-warnings
+          pytest guestbook/tests/e2e --disable-warnings --reuse-db --create-db
