@@ -6,6 +6,8 @@
 
 A Django RESTful API for a Guestbook application. This backend handles user entries, allowing users to create, retrieve, and delete entries. It supports pagination and optimized querying for efficient performance, with comprehensive test coverage and API documentation via Swagger.
 
+![Swagger Screenshot](https://github.com/ilkeozi/bumper-entries/raw/main/bumper_project/bumber-swagger-screenshot.png)
+
 ## Features
 
 - **User and Entry Management**: Create and manage guestbook users and their entries.
@@ -40,7 +42,7 @@ A Django RESTful API for a Guestbook application. This backend handles user entr
 
 ### Prerequisites
 
-- Python 3.10+
+- Python 3.12+
 
 - PostgreSQL
 
@@ -54,7 +56,7 @@ A Django RESTful API for a Guestbook application. This backend handles user entr
 
 ```bash
 
-git clone <repository-url>
+git clone [<repository-url>](https://github.com/ilkeozi/bumper-entries.git
 
 cd bumper-entries
 ```
